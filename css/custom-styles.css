@@ -435,14 +435,14 @@ a.item-add-link {
     height: 42px;
     width: 42px;
     background: #ffffff url(../img/checkbox-checked.png) no-repeat;
-    background-position: -5px -3px;
+    //background-position: -5px -3px;
     position:absolute; 
     left: -47px;
     display: block;
 }
 a.item-zoom-link:hover {background: #d8450b url(../img/gallery-item-icons.png) no-repeat;}
 a.item-details-link:hover {background: #d8450b url(../img/gallery-item-icons.png) no-repeat; background-position: -42px 0px;}
-a.item-add-link:hover {background: #d8450b url(../img/checkbox-checked.png) no-repeat; background-position: -5px -3px;}
+a.item-add-link:hover {background: #d8450b url(../img/checkbox-checked.png) no-repeat; /*background-position: -5px -3px;*/}
 
 .gallery-post-grid {margin:0px;}
 .gallery-post-grid li {list-style: none; float: left; margin-bottom: 30px;}
