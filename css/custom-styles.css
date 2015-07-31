@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'NovaRound'; /*a name to be used later*/
+    src: url('../fonts/NovaRound.ttf'); /*URL to font*/
+}
+@font-face{
+    font-family: 'IcoMoon';
+    src: url('../fonts/IcoMoon-Free.ttf');
+}
+
 html, body {
     font-size:12px; 
     line-height:18px;
@@ -13,15 +22,26 @@ body {background: #f9f9f9 url(../img/page-bg-1.jpg);}
 
 .titles{
     background-color: black;
-    font-family: Tahoma;
+    //border-radius: 8px;
+    font-family: NovaRound, IcoMoon;
     text-shadow: none;
     color: white;
     padding-left: 10px;
     opacity: 0.8;
 }
 
+.no_underline:hover{
+    text-decoration: none;
+}
+
 .left-switch{
     padding-left: 190px;
+}
+
+.floating_header{
+    position: fixed;
+    z-index: 30;
+    width: 100%;
 }
 
 .social-micon{
@@ -37,25 +57,29 @@ body {background: #f9f9f9 url(../img/page-bg-1.jpg);}
 
 .menu{
     font-family: Tahoma;
-    color: #333;
-    font-size: 14px;
+    color: black;//#333;
+    font-size: 12px;
     font-weight: bold;
-    margin: 30px;
+    margin: 18px;
     top: 45%;
     position: relative;
 }
 
 .menu:hover {
-    color: #333;
+    color: black;//#333;
+    text-decoration: none;
 }
 
 .menu-bar{
+    //background-color: white;
+    //opacity: 0.8;
     overflow: no-display;
     margin-left: 190px;
     height: 100px;
     position: absolute;
+    z-index: 20;
     top: 32px;
-    right: 10px
+    right: 40px
 }
 
 .logo-switch{
@@ -66,27 +90,27 @@ body {background: #f9f9f9 url(../img/page-bg-1.jpg);}
 @media (max-width: 767px) {
     body { padding-right: 0px; padding-left: 0px; }
     .container {margin-right: 20px; margin-left: 20px;}
-    
-  .logo-switch {
-    width: 72px;
-    height: 72px;
-  }
-  
-  .menu-bar{
-      top: 0px;
-      height: 72px;
-  }
-  
-  .left-switch{
-      padding-left: 100px;
-  }
+
+    .logo-switch {
+        width: 72px;
+        height: 72px;
+    }
+
+    .menu-bar{
+        top: 0px;
+        height: 72px;
+    }
+
+    .left-switch{
+        padding-left: 100px;
+    }
 }
 
 /***** Titles and Headings *****/
 h1, h2, h3, h4 , h5, h6 {
-    font-family: "Oswald", sans-serif; 
+    font-family: NovaRound,"Oswald", sans-serif; 
     font-weight: normal;
-    text-transform:uppercase; 
+    //text-transform:uppercase; 
 }	
 h1, h2, h3, h4, h5 {text-shadow: 1px 1px 0 #fdfdfd, 2px 2px 0 rgba(81, 81, 81, 0.5), 0 0 1px #fdfdfd;}
 h1.title-bg, h2.title-bg, h3.title-bg, h4.title-bg , h5.title-bg, h6.title-bg {
@@ -265,7 +289,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu{ display: block; }
 
 /* Large Desktop Size */
 @media (min-width: 1200px) {
-    .gallery-hover-6col {width:170px; height:139px;}
+    .gallery-hover-6col {width:170px; height:175px;}
     .gallery-hover-4col {width:270px; height:220px;}
     .gallery-hover-3col {width:370px; height:300px;}
     .gallery-hover-4col-cir {width:270px; height:270px;}
@@ -274,7 +298,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu{ display: block; }
 
 /* Small Desktop Size */
 @media (min-width: 980px) and (max-width: 1199px) {
-    .gallery-hover-6col {width:140px; height:114px;}
+    .gallery-hover-6col {width:140px; height:155px;}
     .gallery-hover-4col {width:220px; height:180px;}
     .gallery-hover-3col {width:300px; height:243px;}
     .gallery-hover-4col-cir {width:220px; height:220px;}
@@ -407,8 +431,18 @@ a.item-details-link {
     left: 47px;
     display: block;
 }
+a.item-add-link { 
+    height: 42px;
+    width: 42px;
+    background: #ffffff url(../img/checkbox-checked.png) no-repeat;
+    background-position: -5px -3px;
+    position:absolute; 
+    left: -47px;
+    display: block;
+}
 a.item-zoom-link:hover {background: #d8450b url(../img/gallery-item-icons.png) no-repeat;}
 a.item-details-link:hover {background: #d8450b url(../img/gallery-item-icons.png) no-repeat; background-position: -42px 0px;}
+a.item-add-link:hover {background: #d8450b url(../img/checkbox-checked.png) no-repeat; background-position: -5px -3px;}
 
 .gallery-post-grid {margin:0px;}
 .gallery-post-grid li {list-style: none; float: left; margin-bottom: 30px;}
