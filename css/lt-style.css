@@ -214,3 +214,36 @@
         display: list-item;
     }
 }
+
+/*--Login Form--*/
+.login-form{
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background: black;
+}
+
+.login-form *{
+    font-family: IcoMoon;
+}
+
+.login-form input{
+    width: 95%;
+}
+
+.login-form a{
+    font-family: IcoMoon;
+    color: white;
+}
+
+.login-form div{
+    padding: 10px;
+    color: white;
+}
+
+.login-form a:hover{
+    color: greenyellow;
+    text-decoration: none;
+}

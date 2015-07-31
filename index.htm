@@ -8,6 +8,7 @@
         <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
         <link rel="stylesheet" href="css/bootstrap.css" />
         <link rel="stylesheet" href="css/lt-style.css" />
+        <link rel="stylesheet" href="js/pwdStrength.js" />
         <link rel="stylesheet" href="css/bootstrap-responsive.css" />
         <link rel="stylesheet" href="css/prettyPhoto.css" />
         <link rel="stylesheet" href="css/flexslider.css" />
@@ -97,32 +98,72 @@
                 $(window).scroll(function () {
                     if ($(document).scrollTop() > 29) {
                         if ($('#nav').hasClass('header')) {
-                            $('#logo').animate({width: '50px', height: '50px', top: '3px'});
-                            //$('#black_bar').animate({top: '-32px'});
+                            if($(window).width() > 760){
+                                $('#logo').animate({width: '50px', height: '50px', top: '-32px'});
+                            }else{
+                                $('#logo').animate({width: '50px', height: '50px'});
+                            }
+                            $('#login-form').animate({top: '60px'});
+                            $('#black_bar').animate({top: '-32px'});
+                            $('#white_bar').animate({top: '3px', height: '30px'});
+                            $('#menu_button').animate({top: '3px'});
                         }
                         $('#nav').removeClass('header');
                         $('#nav').addClass('floating_header');
                         $('#black_line').css({'display': 'block'});
                         $('#white_bg').css({'display': 'block'});
-                        $('#white_bar').css({'top': '3px', 'height': '30px'});
-                        $('#menu_button').css({'top': '3px'});
-                        $('#black_bar').css({'display': 'none'});
+                        //$('#black_bar').css({'display': 'none'});
                         //$('#nav_menu').css({'top': '50px'});
                     } else {
                         if ($('#nav').hasClass('floating_header')) {
-                            $('#logo').animate({width: '100px', height: '100px'});
-                            //$('#black_bar').animate({top: '0px'});
+                            if($(window).width() > 760){
+                                $('#logo').animate({width: '100px', height: '100px', top: '0px'});
+                            }else{
+                                $('#logo').animate({width: '100px', height: '100px'});
+                            }
+                            $('#login-form').animate({top: '92px'});
+                            $('#black_bar').animate({top: '0px'});
+                            $('#white_bar').animate({top: '32px', height: '100px'});
+                            $('#menu_button').animate({top: '32px'});
                         }
                         $('#nav').removeClass('floating_header');
                         $('#nav').addClass('header');
-                        $('#black_bar').css({'display': 'block'});
+                        //$('#black_bar').css({'display': 'block'});
                         $('#black_line').css({'display': 'none'});
                         $('#white_bg').css({'display': 'none'});
-                        $('#white_bar').css({'top': '32px', 'height': '100px'});
-                        $('#menu_button').css({'top': '32px'});
                         //$('#nav_menu').css({'top': '132px'});
                     }
                 });
+            });
+        </script>
+        <script type="text/javascript">
+            var login_view = false;
+            function login() {
+                if (login_view) {
+                    //$('#login-form').css({'display': 'none'});
+                    $('#login-form').fadeOut();
+                    //$('#login-form').animate({right: '-600px'});
+                    login_view = false;
+                } else {
+                    //$('#login-form').css({'display': 'block'});
+                    $('#login-form').fadeIn();
+                    //$('#login-form').animate({right: '100px'});
+                    login_view = true;
+                }
+            }
+            function clicker() {
+                if ($('#show-menu').is(':checked')) {
+                    $("#container").css({'display': 'block'});
+                } else {
+                    $("#container").css({'display': 'none'});
+                }
+            }
+            $(window).resize(function () {
+                if ($(window).width() > 760) {
+                    $("#container").css({'display': 'block'});
+                } else if ($('#show-menu').is(':checked')) {
+                    $("#container").css({'display': 'none'});
+                }
             });
         </script>
         <div class="header" id="nav">
@@ -131,13 +172,14 @@
                 <a href="http://www.lt.lk/subscribe-to-lt/" class="left-switch" style="color: white; font-family: Tahoma; top: 6px; position: relative">Subscribe To LT</a>
                 <a class="hidden-tablet no_underline" style="color: white; font-family: Tahoma; padding-left: 100px; top: 6px; position: relative">LT is a proudly Sri Lankan magazine</a>
                 <a href="mailto:editor@lt.lk" style="color: white; font-family: Tahoma; padding-left: 100px; top: 6px; position: relative">editor@lt.lk</a>
+                <a href="#" id="login-button" onclick="login()" class="no_underline" style="color: white; font-family: Tahoma; right: 200px; top: 6px; position: absolute">Log In</a>
                 <a href="#"><img class="social-micon right" src="img/LTGallery/linkedin.png" style="margin-right: 20px" alt="LinkedIn" /></a>
                 <a href="https://plus.google.com/u/0/+LtLkLifeTimesSL"><img class="social-micon right" src="img/LTGallery/google-plus.png" alt="Google+" /></a>
                 <a href="https://instagram.com/lifetimes_srilanka/"><img class="social-micon right" src="img/LTGallery/instagram.png" alt="Instagram" /></a>
                 <a href="https://twitter.com/Life_TimesSL"><img class="social-micon right" src="img/LTGallery/twitter.png" alt="twitter" /></a>
                 <a href="https://www.facebook.com/LifeTimesSL"><img class="social-micon right" src="img/LTGallery/facebook.png" alt="facebook" /></a>
             </div>
-            <a href="http://lt.lk"><img class="logo-switch" src="img/LTGallery/lt-logo-144.jpg" alt="Life Times Magazine" style="padding-left: 20px; z-index: 20" id="logo"/></a>
+            <a href="http://lt.lk"><img class="logo-switch" src="img/LTGallery/lt-logo-144.jpg" alt="Life Times Magazine" style="padding-left: 20px; z-index: 20; position: relative" id="logo"/></a>
             <div  style="background-color: white; opacity: 0.8; height: 50px; top:3px; width: 100%; z-index: -1; position: fixed; display: none" id="white_bg"></div>
             <div class="menu-bar hidden-tablet hidden-phone" id="white_bar">
                 <ul id='flow'>
@@ -170,7 +212,23 @@
                 </ul>
             </div>
             <div class="menu-bar hidden-desktop" id="menu_button">
-                <label for="show-menu" id='clicker'><img src="img/LTGallery/menu.png" alt="Menu" style="opacity: 0.8; top: 0px; left: -8px; position: relative" width="48" height="48"/></label>
+                <label for="show-menu" onclick="clicker()" id='clicker'><img src="img/LTGallery/menu.png" alt="Menu" style="opacity: 0.8; top: 0px; left: -8px; position: relative" width="48" height="48"/></label>
+            </div>
+        </div>
+        <div class="hidden-phone hidden-tablet" style="position: fixed; top: 92px; display: none; right: 100px;z-index: 20" id="login-form">
+            <div style="height: 300px; width: 300px;" id="pwd-container">
+                <section class="login-form">
+                    <form method="post" action="login.php" role="login">
+                        <input type="email" name="email" placeholder="Email" required value="joestudent@gmail.com" />
+
+                        <input type="password" id="password" placeholder="Password" required="" />
+
+                        <button type="submit" name="go" class="btn btn-primary" style="width: 100%; position: relative">Sign in</button>
+                        <div>
+                            <a href="#">Create account</a> or <a href="#">reset password</a>
+                        </div>
+                    </form>
+                </section>  
             </div>
         </div>
         <div class="hidden-desktop">
@@ -351,8 +409,8 @@
                 <div style="padding: 2px;" class="footer">
                     <a href="http://www.lt.lk/" title="LT"><img alt="LT" src="img/LTGallery/lt-logo-72.png" /></a>
                     <ul itemscope="" itemtype="http://schema.org/Person" class="footer-ul">
-			<li><span itemprop="name">Team LT</span></li>	
-			<li><span itemprop="jobTitle">LIFE TIMES SRI LANKA</span></li>
+                        <li><span itemprop="name">Team LT</span></li>	
+                        <li><span itemprop="jobTitle">LIFE TIMES SRI LANKA</span></li>
                         <li><span>+94 (0) 777101080</span></li>
                         <li><span><a itemprop="email" href="mailto:info@lt.lk">info@lt.lk</a></span></li>
                         <li><span><a href="www.lt.lk">www.lt.lk</a></span></li><br />
