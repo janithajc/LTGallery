@@ -7,6 +7,7 @@
 
         <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
         <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/lt-style.css" />
         <link rel="stylesheet" href="css/bootstrap-responsive.css" />
         <link rel="stylesheet" href="css/prettyPhoto.css" />
         <link rel="stylesheet" href="css/custom-styles.css" />
@@ -54,45 +55,215 @@
     </head>
 
     <body>
-        <div class="header">
-            <div style="background-color: black; height: 32px; position: relative" class="hidden-phone">
+        <!-- header start-->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(window).scroll(function () {
+                    if ($(document).scrollTop() > 29) {
+                        if ($('#nav').hasClass('header')) {
+                            if ($(window).width() > 760) {
+                                $('#logo').animate({width: '50px', height: '50px', top: '-32px'});
+                            } else {
+                                $('#logo').animate({width: '50px', height: '50px'});
+                            }
+                            $('#login-form').animate({top: '60px'});
+                            $('#black_bar').animate({top: '-32px'});
+                            $('#white_bar').animate({top: '3px', height: '30px'});
+                            $('#menu_button').animate({top: '3px'});
+                        }
+                        $('#nav').removeClass('header');
+                        $('#nav').addClass('floating_header');
+                        $('#black_line').css({'display': 'block'});
+                        $('#white_bg').css({'display': 'block'});
+                        //$('#black_bar').css({'display': 'none'});
+                        //$('#nav_menu').css({'top': '50px'});
+                    } else {
+                        if ($('#nav').hasClass('floating_header')) {
+                            if ($(window).width() > 760) {
+                                $('#logo').animate({width: '100px', height: '100px', top: '0px'});
+                            } else {
+                                $('#logo').animate({width: '100px', height: '100px'});
+                            }
+                            $('#login-form').animate({top: '92px'});
+                            $('#black_bar').animate({top: '0px'});
+                            $('#white_bar').animate({top: '32px', height: '100px'});
+                            $('#menu_button').animate({top: '32px'});
+                        }
+                        $('#nav').removeClass('floating_header');
+                        $('#nav').addClass('header');
+                        //$('#black_bar').css({'display': 'block'});
+                        $('#black_line').css({'display': 'none'});
+                        $('#white_bg').css({'display': 'none'});
+                        //$('#nav_menu').css({'top': '132px'});
+                    }
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            var login_view = false;
+            function login() {
+                if (login_view) {
+                    //$('#login-form').css({'display': 'none'});
+                    $('#login-form').fadeOut();
+                    //$('#login-form').animate({right: '-600px'});
+                    login_view = false;
+                } else {
+                    //$('#login-form').css({'display': 'block'});
+                    $('#login-form').fadeIn();
+                    //$('#login-form').animate({right: '100px'});
+                    login_view = true;
+                }
+            }
+            function clicker() {
+                if ($('#show-menu').is(':checked')) {
+                    $("#container").css({'display': 'block'});
+                } else {
+                    $("#container").css({'display': 'none'});
+                }
+            }
+            $(window).resize(function () {
+                if ($(window).width() > 760) {
+                    $("#container").css({'display': 'block'});
+                } else if ($('#show-menu').is(':checked')) {
+                    $("#container").css({'display': 'none'});
+                }
+            });
+        </script>
+        <div class="header" id="nav">
+            <div style="background-color: black; height: 3px; display: none; z-index: 50" id="black_line"></div>
+            <div style="background-color: black; height: 32px; position: relative" class="hidden-phone" id="black_bar">
                 <a href="http://www.lt.lk/subscribe-to-lt/" class="left-switch" style="color: white; font-family: Tahoma; top: 6px; position: relative">Subscribe To LT</a>
-                <a class="hidden-tablet" style="color: white; font-family: Tahoma; padding-left: 100px; top: 6px; position: relative">LT is a proudly Sri Lankan magazine</a>
+                <a class="hidden-tablet no_underline" style="color: white; font-family: Tahoma; padding-left: 100px; top: 6px; position: relative">LT is a proudly Sri Lankan magazine</a>
                 <a href="mailto:editor@lt.lk" style="color: white; font-family: Tahoma; padding-left: 100px; top: 6px; position: relative">editor@lt.lk</a>
+                <a href="#" id="login-button" onclick="login()" class="no_underline" style="color: white; font-family: Tahoma; right: 200px; top: 6px; position: absolute">Log In</a>
                 <a href="#"><img class="social-micon right" src="img/LTGallery/linkedin.png" style="margin-right: 20px" alt="LinkedIn" /></a>
                 <a href="https://plus.google.com/u/0/+LtLkLifeTimesSL"><img class="social-micon right" src="img/LTGallery/google-plus.png" alt="Google+" /></a>
                 <a href="https://instagram.com/lifetimes_srilanka/"><img class="social-micon right" src="img/LTGallery/instagram.png" alt="Instagram" /></a>
                 <a href="https://twitter.com/Life_TimesSL"><img class="social-micon right" src="img/LTGallery/twitter.png" alt="twitter" /></a>
                 <a href="https://www.facebook.com/LifeTimesSL"><img class="social-micon right" src="img/LTGallery/facebook.png" alt="facebook" /></a>
             </div>
-            <a href="lt.lk"><img class="logo-switch" src="img/LTGallery/lt-logo-144.jpg" alt="Life Times Magazine" style="padding-left: 20px"/></a>
-            <div class="menu-bar hidden-tablet hidden-phone">
-                <a href="#" class="menu">HOME</a>
-                <a href="#" class="menu">FEATURES</a>
-                <a href="#" class="menu">ABOUT US</a>
-                <a href="#" class="menu">TEAM LT</a>
-                <a href="#" class="menu">LT PRO</a>
-                <a href="#" class="menu">ARCHIVES</a>
-                <a href="index.htm" class="menu">GALLERY</a>
-                <a href="#" class="menu">BLOG</a>
-                <a href="#" class="menu">CONTACT US</a>
+            <a href="http://lt.lk"><img class="logo-switch" src="img/LTGallery/lt-logo-144.jpg" alt="Life Times Magazine" style="padding-left: 20px; z-index: 20; position: relative" id="logo"/></a>
+            <div  style="background-color: white; opacity: 0.8; height: 50px; top:3px; width: 100%; z-index: -1; position: fixed; display: none" id="white_bg"></div>
+            <div class="menu-bar hidden-tablet hidden-phone" id="white_bar">
+                <ul id='flow'>
+                    <li><a href="#" class="menu">HOME</a></li>
+                    <li>
+                        <a href="#" class="menu">FEATURES</a>
+                        <ul>
+                            <li><a  href="http://www.lt.lk/editor-letters/">EDITOR LETTERS</a></li>
+                            <li><a  href="http://www.lt.lk/cover-story/">COVER STORY</a></li>
+                            <li><a  href="http://www.lt.lk/3-things-to-do-in-sri-lanka-before-you-die/">3-THINGS</a></li>
+                            <li><a  href="http://www.lt.lk/art/">ART</a></li>
+                            <li><a  href="http://www.lt.lk/design/">DESIGN</a></li>
+                            <li><a  href="http://www.lt.lk/escape/">ESCAPE</a></li>
+                            <li><a  href="http://www.lt.lk/the-gourmand/">THE GOURMAND</a></li>
+                            <li><a  href="http://www.lt.lk/wildlife/">WILDLIFE</a></li>
+                            <li><a  href="http://www.lt.lk/whinging-pome/">WHINGING POME</a></li>
+                            <li><a  href="http://www.lt.lk/cause/">CAUSE</a></li>
+                            <li><a  href="http://www.lt.lk/people/">PEOPLE</a></li>
+                            <li><a  href="http://www.lt.lk/health/">HEALTH</a></li>
+                            <li><a  href="http://www.lt.lk/front-desk-news/">FRONT DESK NEWS</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="menu">ABOUT US</a></li>
+                    <li><a href="#" class="menu">TEAM LT</a></li>
+                    <li><a href="#" class="menu">LT PRO</a></li>
+                    <li><a href="#" class="menu">ARCHIVES</a></li>
+                    <li><a href="#" class="menu">GALLERY</a></li>
+                    <li><a href="#" class="menu">BLOG</a></li>
+                    <li><a href="#" class="menu">CONTACT US</a></li>
+                </ul>
             </div>
-            <div class="menu-bar hidden-desktop">
-                <a href="#"><img src="img/LTGallery/menu.png" alt="Menu" style="opacity: 0.8; top: 5px; left: -8px; position: relative" width="48" height="48"/></a>
+            <div class="menu-bar hidden-desktop" id="menu_button">
+                <label for="show-menu" onclick="clicker()" id='clicker'><img src="img/LTGallery/menu.png" alt="Menu" style="opacity: 0.8; top: 0px; left: -8px; position: relative" width="48" height="48"/></label>
             </div>
         </div>
+        <div class="hidden-phone hidden-tablet" style="position: fixed; top: 92px; display: none; right: 100px;z-index: 20" id="login-form">
+            <div style="height: 300px; width: 300px;" id="pwd-container">
+                <section class="login-form">
+                    <form method="post" action="login.php" role="login">
+                        <input type="email" name="email" placeholder="Email" required value="joestudent@gmail.com" />
+
+                        <input type="password" id="password" placeholder="Password" required="" />
+
+                        <button type="submit" name="go" class="btn btn-primary" style="width: 100%; position: relative">Sign in</button>
+                        <div>
+                            <a href="#">Create account</a> or <a href="#">reset password</a>
+                        </div>
+                    </form>
+                </section>  
+            </div>
+        </div>
+        <div class="hidden-desktop">
+            <input type="checkbox" id="show-menu" role="button" style='display: none' />
+            <ul id='nav_menu' class='span1'>
+                <li><a href="#">HOME</a></li>
+                <li>
+                    <a href="#">FEATURES</a>
+                    <ul>
+                        <li><a  href="http://www.lt.lk/editor-letters/">EDITOR LETTERS</a></li>
+                        <li><a  href="http://www.lt.lk/cover-story/">COVER STORY</a></li>
+                        <li><a  href="http://www.lt.lk/3-things-to-do-in-sri-lanka-before-you-die/">3-THINGS</a></li>
+                        <li><a  href="http://www.lt.lk/art/">ART</a></li>
+                        <li><a  href="http://www.lt.lk/design/">DESIGN</a></li>
+                        <li><a  href="http://www.lt.lk/escape/">ESCAPE</a></li>
+                        <li><a  href="http://www.lt.lk/the-gourmand/">THE GOURMAND</a></li>
+                        <li><a  href="http://www.lt.lk/wildlife/">WILDLIFE</a></li>
+                        <li><a  href="http://www.lt.lk/whinging-pome/">WHINGING POME</a></li>
+                        <li><a  href="http://www.lt.lk/cause/">CAUSE</a></li>
+                        <li><a  href="http://www.lt.lk/people/">PEOPLE</a></li>
+                        <li><a  href="http://www.lt.lk/health/">HEALTH</a></li>
+                        <li><a  href="http://www.lt.lk/front-desk-news/">FRONT DESK NEWS</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">TEAM LT</a></li>
+                <li><a href="#">LT PRO</a></li>
+                <li><a href="#">ARCHIVES</a></li>
+                <li><a href="#">GALLERY</a></li>
+                <li><a href="#">BLOG</a></li>
+                <li><a href="#">CONTACT US</a></li>
+            </ul>
+        </div>
+        <!-- header end-->
+        <!--Search start-->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#search').fadeIn('slow');
+                $('#search').fadeOut('slow');
+            });
+        </script>
+        <form method="GET" action="viewer.php" class="navbar-search right"
+              style="display: none;
+              margin-right: 100px;
+              vertical-align: central;
+              background: rgba(0,0,0,0.8);
+              padding-top: 10px;
+              padding-left: 10px;
+              border-radius: 5px;" id="search">
+            <input name="seach" type="text" placeholder="Search using tags" style="
+                   width: 70%;
+                   min-width: 50px;
+                   height: 35px;"/>
+            <button class="btn btn-navbar hidden-phone" type="submit" style="
+                    width: 45px;
+                    height: 45px;
+                    vertical-align: top"><img src="img/search.png" alt="search" /></button>
+        </form>
+        <!--Search end-->
         <div class="container main-container">
             <div class="row">
                 <div class="span12 gallery">
                     <h3 class="titles "> Category: Food</h3>
                     <div class="row clearfix">
-                        <ul class="gallery-post-grid holder">
+                        <ul class="gallery-post-grid">
 
                             <li  class="span2 gallery-item" data-id="id-1" data-type="Food">
                                 <span class="gallery-hover-6col hidden-phone hidden-tablet">
                                     <span class="gallery-icons">
-                                        <a href="img/Catagories/Food/MG_09092.jpg" class="item-zoom-link lightbox" title="Food" data-rel="prettyPhoto"></a>
-                                        <a href="#" class="item-details-link"></a>
+                                        <a href="img/Catagories/Food/MG_09092.jpg" class="item-zoom-link" title="Food" data-rel="prettyPhoto"></a>
+                                        <a href="#" class="item-add-link">Add Remove</a>
+                                        <a href="#" class="item-details-link">Edit</a>
                                     </span>
                                 </span>
                                 <a href="#"><img src="img/Catagories/Food/MG_09092.jpg" alt="Gallery"></a>
@@ -102,8 +273,9 @@
                             <li class="span2 gallery-item" data-id="id-2" data-type="Food">
                                 <span class="gallery-hover-6col hidden-phone hidden-tablet">
                                     <span class="gallery-icons">
-                                        <a href="img/Catagories/Food/MG_73871.jpg" class="item-zoom-link lightbox" title="Food" data-rel="prettyPhoto"></a>
+                                        <a href="img/Catagories/Food/MG_73871.jpg" class="item-zoom-link" title="Food" data-rel="prettyPhoto"></a>
                                         <a href="#" class="item-details-link"></a>
+                                        <a href="#" class="item-add-link"></a>
                                     </span>
                                 </span>
                                 <a href="#"><img src="img/Catagories/Food/MG_73871.jpg" alt="Gallery"></a>
@@ -113,8 +285,9 @@
                             <li class="span2 gallery-item" data-id="id-3" data-type="Food">
                                 <span class="gallery-hover-6col hidden-phone hidden-tablet">
                                     <span class="gallery-icons">
-                                        <a href="img/Catagories/Food/MG_76701.jpg" class="item-zoom-link lightbox" title="Food" data-rel="prettyPhoto"></a>
+                                        <a href="img/Catagories/Food/MG_76701.jpg" class="item-zoom-link" title="Food" data-rel="prettyPhoto"></a>
                                         <a href="#" class="item-details-link"></a>
+                                        <a href="#" class="item-add-link"></a>
                                     </span>
                                 </span>
                                 <a href="#"><img src="img/Catagories/Food/MG_76701.jpg" alt="Gallery"></a>
@@ -124,8 +297,9 @@
                             <li class="span2 gallery-item" data-id="id-4" data-type="Food">
                                 <span class="gallery-hover-6col hidden-phone hidden-tablet">
                                     <span class="gallery-icons">
-                                        <a href="img/Catagories/Food/MG_82341.jpg" class="item-zoom-link lightbox" title="Food" data-rel="prettyPhoto"></a>
+                                        <a href="img/Catagories/Food/MG_82341.jpg" class="item-zoom-link" title="Food" data-rel="prettyPhoto"></a>
                                         <a href="#" class="item-details-link"></a>
+                                        <a href="#" class="item-add-link"></a>
                                     </span>
                                 </span>
                                 <a href="#"><img src="img/Catagories/Food/MG_82341.jpg" alt="Gallery"></a>
@@ -135,8 +309,9 @@
                             <li class="span2 gallery-item" data-id="id-5" data-type="Food">
                                 <span class="gallery-hover-6col hidden-phone hidden-tablet">
                                     <span class="gallery-icons">
-                                        <a href="img/Catagories/Food/MG_99611.jpg" class="item-zoom-link lightbox" title="Food" data-rel="prettyPhoto"></a>
+                                        <a href="img/Catagories/Food/MG_99611.jpg" class="item-zoom-link" title="Food" data-rel="prettyPhoto"></a>
                                         <a href="#" class="item-details-link"></a>
+                                        <a href="#" class="item-add-link"></a>
                                     </span>
                                 </span>
                                 <a href="#"><img src="img/Catagories/Food/MG_99611.jpg" alt="Gallery"></a>
@@ -146,8 +321,9 @@
                             <li class="span2 gallery-item" data-id="id-6" data-type="Miscellaneous">
                                 <span class="gallery-hover-6col hidden-phone hidden-tablet">
                                     <span class="gallery-icons">
-                                        <a href="img/Catagories/Miscellaneous/MG_4969.jpg" class="item-zoom-link lightbox" title="Miscellaneous" data-rel="prettyPhoto"></a>
+                                        <a href="img/Catagories/Miscellaneous/MG_4969.jpg" class="item-zoom-link" title="Miscellaneous" data-rel="prettyPhoto"></a>
                                         <a href="#" class="item-details-link"></a>
+                                        <a href="#" class="item-add-link"></a>
                                     </span>
                                 </span>
                                 <a href="#"><img src="img/Catagories/Miscellaneous/MG_4969.jpg" alt="Gallery"></a>
@@ -157,8 +333,9 @@
                             <li class="span2 gallery-item" data-id="id-7" data-type="Miscellaneous">
                                 <span class="gallery-hover-6col hidden-phone hidden-tablet">
                                     <span class="gallery-icons">
-                                        <a href="img/Catagories/Miscellaneous/MG_7598.jpg" class="item-zoom-link lightbox" title="Miscellaneous" data-rel="prettyPhoto"></a>
+                                        <a href="img/Catagories/Miscellaneous/MG_7598.jpg" class="item-zoom-link" title="Miscellaneous" data-rel="prettyPhoto"></a>
                                         <a href="#" class="item-details-link"></a>
+                                        <a href="#" class="item-add-link"></a>
                                     </span>
                                 </span>
                                 <a href="#"><img src="img/Catagories/Miscellaneous/MG_7598.jpg" alt="Gallery"></a>
@@ -168,8 +345,9 @@
                             <li class="span2 gallery-item" data-id="id-8" data-type="Miscellaneous">
                                 <span class="gallery-hover-6col hidden-phone hidden-tablet">
                                     <span class="gallery-icons">
-                                        <a href="img/Catagories/Miscellaneous/MG_8281.jpg" class="item-zoom-link lightbox" title="Miscellaneous" data-rel="prettyPhoto"></a>
+                                        <a href="img/Catagories/Miscellaneous/MG_8281.jpg" class="item-zoom-link" title="Miscellaneous" data-rel="prettyPhoto"></a>
                                         <a href="#" class="item-details-link"></a>
+                                        <a href="#" class="item-add-link"></a>
                                     </span>
                                 </span>
                                 <a href="#"><img src="img/Catagories/Miscellaneous/MG_8281.jpg" alt="Gallery"></a>
@@ -192,6 +370,24 @@
                 </div>
             </div>
         </div>
+        <!--footer start-->
+        <div id="sub-footer" style="background: black; width: 100%; overflow: hidden; position: relative; margin-bottom: 0px">
+            <div class="footer-holder">
+                <div style="padding: 2px;" class="footer">
+                    <a href="http://www.lt.lk/" title="LT"><img alt="LT" src="img/LTGallery/lt-logo-72.png" /></a>
+                    <ul itemscope="" itemtype="http://schema.org/Person" class="footer-ul">
+                        <li><span itemprop="name">Team LT</span></li>	
+                        <li><span itemprop="jobTitle">LIFE TIMES SRI LANKA</span></li>
+                        <li><span>+94 (0) 777101080</span></li>
+                        <li><span><a itemprop="email" href="mailto:info@lt.lk">info@lt.lk</a></span></li>
+                        <li><span><a href="http://www.lt.lk">www.lt.lk</a></span></li><br />
+                        <li><span >COPYRIGHT © 2015 - ALL RIGHTS RESERVED LT |  <a href="http://illusionbox.github.io" target="_blank" >Web Design by IllusionBox </a></span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearboth"></div>
+        </div>
+        <!--footer end-->
         <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
     </body>
 </html>

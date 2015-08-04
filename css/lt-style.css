@@ -1,0 +1,249 @@
+/* BE SURE TO INCLUDE THE CSS RESET FOUND IN THE DEMO PAGE'S CSS */
+
+/*------------------------------------*\
+    NAV
+\*------------------------------------*/
+#flow{
+    list-style:none;
+    font-weight:bold;
+    //margin-bottom:10px;
+    float:left; /* Clear floats */
+    width:100%;
+    /* Bring the flow above everything else--uncomment if needed.
+    position:relative;
+    z-index:5;
+    */
+}
+#flow li{
+    float:left;
+    position:relative;
+    z-index: 20;
+}
+#flow a{
+    display:block;
+    text-decoration:none;
+}
+#flow a:hover{
+    text-decoration:none;
+}
+
+/*--- DROPDOWN ---*/
+#flow ul{
+    background:#fff; /* Adding a background makes the dropdown work properly in IE7+. Make this as close to your page's background as possible (i.e. white page == white background). */
+    background:rgba(255,255,255,0); /* But! Let's make the background fully transparent where we can, we don't actually want to see it if we can help it... */
+    list-style: none;
+    position:absolute;
+    top: 50px;
+    display: none;
+}
+#flow ul li{
+    padding-top:10px; /* Introducing a padding between the li and the a give the illusion spaced items */
+    padding-bottom: 10px;
+    padding-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 200px;
+    float:none;
+}
+#flow ul a{
+    white-space:nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+    font-family: "Calibri", Tahoma;
+    text-transform:uppercase;
+    color: white;//#333;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+#flow li:hover ul{ /* Display the dropdown on hover */
+    background:#68BF3D;
+    left:-150px; /* Bring back on-screen when needed */
+    display: block;
+}
+#flow li:hover a{ /* These create persistent hover states, meaning the top-most link stays 'hovered' even when your cursor has moved down the list. */
+    text-decoration:none;
+}
+#flow li:hover ul a{ /* The persistent hover state does however create a global style for links even before they're hovered. Here we undo these effects. */
+    text-decoration:none;
+}
+#flow li:hover ul li:hover{ /* Here we define the most explicit hover states--what happens when you hover each individual link. */
+    background-color:#3CC283;
+}
+
+#show-menu:checked ~ #nav_menu{
+    display: block;
+}
+
+#show-menu ~ #nav_menu{
+    display: none;
+}
+
+.footer-ul{
+    list-style: none;
+    left: -20px;
+    position: relative;
+}
+
+.footer{
+    font-family: NovaRound, Tahoma;
+    text-decoration: none;
+    color: white;
+    display: inline;
+}
+
+.footer a{
+    font-family: NovaRound, Tahoma;
+    text-decoration: none;
+}
+
+.footer-ul li{
+    display: inline;
+    padding-right: 20px;
+}
+
+.footer-holder{
+    left: 17%;
+    position: relative;
+    padding: 10px;
+}
+
+@media (min-width : 761px){
+    #nav_menu{
+        position: relative;
+        //top: 132px;
+        z-index: 30;
+        width: 100%;
+        list-style: none;
+        text-align: center;
+        background: black;
+    }
+    /*Make dropdown links appear inline*/
+    #nav_menu ul {
+        //position: static;
+        display: none;
+    }
+    /*Create vertical spacing*/
+    #nav_menu li {
+        padding: 10px;
+        margin-bottom: 1px;
+    }
+    /*Make all menu links full width*/
+    #nav_menu ul li, li a {
+        white-space:nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+        font-family: IcoMoon;
+        text-transform:uppercase;
+        color: white;//#333;
+        font-size: 14px;
+        font-weight: bold;
+        width: 100%;
+    }
+    #nav_menu li:hover{
+        background: white;
+    }
+    #nav_menu li:hover a{
+        color: black;
+    }
+    #nav_menu li:hover ul{
+        display: block;
+        list-style: none;
+        text-align: center;
+        left: -20px;
+    }
+    #nav_menu a:hover{
+        text-decoration: none;
+    }
+}
+
+@media screen and (max-width : 1500px){
+    .footer-holder{
+        left: 5%;
+        position: relative;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width : 760px){
+    #nav_menu{
+        list-style: none;
+        text-align: center;
+        background: black;
+    }
+
+    /*Make dropdown links appear inline*/
+    #nav_menu ul {
+        position: static;
+        display: none;
+    }
+    /*Create vertical spacing*/
+    #nav_menu li {
+        padding: 10px;
+        margin-bottom: 1px;
+    }
+    /*Make all menu links full width*/
+    #nav_menu ul li, li a {
+        white-space:nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+        font-family: IcoMoon;
+        text-transform:uppercase;
+        color: white;//#333;
+        font-size: 14px;
+        font-weight: bold;
+        width: 100%;
+    }
+    #nav_menu li:hover{
+        background: white;
+    }
+    #nav_menu li:hover a{
+        color: black;
+    }
+    #nav_menu li:hover ul{
+        display: block;
+        list-style: none;
+        text-align: center;
+        left: -20px;
+    }
+    #nav_menu a:hover{
+        text-decoration: none;
+    }
+    .footer{
+        list-style: none;
+        display: list-item;
+    }
+    .footer-holder{
+        left: 0px;
+    }
+    .footer-ul li{
+        display: list-item;
+    }
+}
+
+/*--Login Form--*/
+.login-form{
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background: black;
+}
+
+.login-form *{
+    font-family: IcoMoon;
+}
+
+.login-form input{
+    width: 95%;
+}
+
+.login-form a{
+    font-family: IcoMoon;
+    color: white;
+}
+
+.login-form div{
+    padding: 10px;
+    color: white;
+}
+
+.login-form a:hover{
+    color: greenyellow;
+    text-decoration: none;
+}
